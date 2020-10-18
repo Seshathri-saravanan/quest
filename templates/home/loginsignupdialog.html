@@ -1,0 +1,60 @@
+{% load static %}
+<div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content custom-modal">
+        <div class="modal-body">
+          <nav>
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active login-nav" id="nav-login-tab" data-toggle="tab" href="#nav-login" role="tab" aria-controls="nav-home" aria-selected="true">Log In</a>
+              <a class="nav-item nav-link" id="nav-signup-tab" data-toggle="tab" href="#nav-signup" role="tab" aria-controls="nav-profile" aria-selected="false">Sign up</a>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="logo">
+              <img src="{% static 'images/questlogo.jpeg' %}" width="50%" object-fit="contain" class="logoimage"/>
+            </div>
+            <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-home-tab">
+                <form>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="custom-input" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div style="display: flex;flex-direction: column;justify-content: center;">
+                      <button type="button" class="custombtn" style="margin-left: auto;margin-right: auto;">sign up</button>
+                      <a type="button" class="exit" data-dismiss="modal" style="margin-left: auto;margin-right: auto;">Close</a>
+                    </div>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="nav-signup" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <form>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Username</label>
+                      <input type="email" class="custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email </label>
+                        <input type="email" class="custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="custom-input" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">retype Password</label>
+                        <input type="password" class="custom-input" id="exampleInputPassword1" placeholder="Retype Password">
+                    </div>
+                    <div style="display: flex;flex-direction: column;justify-content: center;">
+                      <button type="button" class="custombtn" style="margin-left: auto;margin-right: auto;">sign up</button>
+                      <a type="button" class="exit" data-dismiss="modal" style="margin-left: auto;margin-right: auto;">Close</a>
+                    </div>
+                    </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
