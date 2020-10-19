@@ -1,0 +1,21 @@
+{% extends "places/place.html" %}
+{% load static %}
+{% block placename %}
+    <h1 class="para">MAJOR CITIES</h1>
+{% endblock %}
+{% block topimage %}
+    <img src="{% static 'images/cities.jpg' %}" style="height: 100vh; width: 100%;object-fit: cover;" class="carousel-img"/>
+{% endblock %}
+{% block aboutplace %}
+    <p class="para">
+        India is a vast, astonishing and diverse country. 
+        Its magnificent cities are a showcase for the wonderful
+        wealth of tradition, culture, and exuberance of life for 
+        which India is world-famous. An ultimate travel 
+        destination, India has so much to offer. From the 
+        southern states of Goa and Kerala with their laid-back 
+        open-mindedness, to the dusty desert forts of Rajasthan, 
+        there is something ultimately enigmatic and enchanting 
+        about this great and fascinating Asian giant.
+    </p>
+{% endblock %}

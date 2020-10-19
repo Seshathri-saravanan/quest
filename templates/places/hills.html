@@ -1,0 +1,19 @@
+{% extends "places/place.html" %}
+{% load static %}
+{% block placename %}
+    <h1 class="para">HILL STATIONS</h1>
+{% endblock %}
+{% block topimage %}
+    <img src="{% static 'images/hills.jpg' %}" style="height: 100vh; width: 100%;object-fit: cover;" class="carousel-img"/>
+{% endblock %}
+{% block aboutplace %}
+    <p class="para">
+        Hill station in India is a colonial addition in 
+        settlement system of the country. Though
+        the immediate reason for their emergence 
+        was to act as sanatoria for the soldiers of British 
+        origin, later on these places served many purposes 
+        for the British white people and in post-independence
+        era these places are acting as hill resorts.
+    </p>
+{% endblock %}

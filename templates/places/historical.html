@@ -1,0 +1,22 @@
+{% extends "places/place.html" %}
+{% load static %}
+{% block placename %}
+    <h1 class="para">HISTORICAL PLACES</h1>
+{% endblock %}
+{% block topimage %}
+    <img src="{% static 'images/red_fort_delhi.jpg' %}" style="height: 100vh; width: 100%;object-fit: cover;" class="carousel-img"/>
+{% endblock %}
+{% block aboutplace %}
+    <p class="para">
+        When you speak of historic places in India, the list is endless.
+        Right from the north to the south, east and west, there are 
+        so many places that are rooted in India’s glorious and rich past.
+        While all of them are worthy of a visit, there are some that are
+        exceptionally interesting and beautiful.
+        From palaces to forts, temples and stunning monuments,
+        there are plenty of opulent and historic monuments in India,
+        making it to various international travel guides, TV shows and
+        books. We’ve rounded up the best historical places in India
+        that every foreign tourist and Indian should visit.
+    </p>
+{% endblock %}

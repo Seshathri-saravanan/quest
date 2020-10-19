@@ -1,0 +1,18 @@
+{% extends "places/place.html" %}
+{% load static %}
+{% block placename %}
+    <h1 class="para">TEMPLES</h1>
+{% endblock %}
+{% block topimage %}
+    <img src="{% static 'images/historical.jpg' %}" style="height: 100vh; width: 100%;object-fit: cover;" class="carousel-img"/>
+{% endblock %}
+{% block aboutplace %}
+    <p class="para">
+        India is known for its temples – beautiful, serene places
+        of worship - significant religious and historic landmarks.
+        These ancient, intricately designed and faithfully
+        maintained places of worship are a must-visit for devotees 
+        and for all those who nurture an interest in history 
+        and architecture.
+    </p>
+{% endblock %}

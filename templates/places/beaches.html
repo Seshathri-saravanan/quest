@@ -1,0 +1,16 @@
+{% extends "places/place.html" %}
+{% load static %}
+{% block placename %}
+    <h1 class="para">BEACHES</h1>
+{% endblock %}
+{% block topimage %}
+    <img src="{% static 'images/beaches.jpg' %}" style="height: 100vh; width: 100%;object-fit: cover;" class="carousel-img"/>
+{% endblock %}
+{% block aboutplace %}
+    <p class="para">
+        There are many beaches on the Indian coast which
+        stretches for 7517 km both on the eastern and 
+        western coast.India having the longest stretch of 
+        coastline exhibits some serene beautiful beaches.
+    </p>
+{% endblock %}

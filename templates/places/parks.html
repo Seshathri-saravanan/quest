@@ -1,0 +1,24 @@
+{% extends "places/place.html" %}
+{% load static %}
+{% block placename %}
+    <h1 class="para">NATIONAL PARKS</h1>
+{% endblock %}
+{% block topimage %}
+    <img src="{% static 'images/tiger.jpg' %}" style="height: 100vh; width: 100%;object-fit: cover;" class="carousel-img"/>
+{% endblock %}
+{% block aboutplace %}
+    <p class="para">
+        National parks in India are IUCN category II protected
+        areas. India's first national park was established in 1936 
+        as Hailey National Park, now known as Jim Corbett
+        National Park, Uttarakhand. By 1970, India only had
+        five national parks. In 1972, India enacted the Wildlife
+        Protection Act and Project Tiger to safeguard the habitats
+        of conservation reliant species.
+        Further federal legislation strengthening protection for 
+        wildlife was introduced in the 1980s. As of May 2020,
+        there were 101 national parks encompassing an area of
+        40,501.13 km2 (15,637.57 sq mi), under protected areas of
+        India category II comprising 1.23% of India's total surface area.
+    </p>
+{% endblock %}
