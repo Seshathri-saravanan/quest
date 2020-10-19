@@ -65,3 +65,41 @@ label {
 .carousel-img {
     filter: brightness(70%);
 }
+.header-link {
+    color:white;
+}
+.header-link:hover {
+    color:#00ccff;
+}
+.search-bar {
+    border-radius: 20px;
+}
+.login-link {
+    color:black;
+    border:2px solid  black;
+}
+.active-nav {
+background-color: blue;
+}
+.primary {
+    background-color: #00ccff;
+    color:#fff;
+}
+.primary:hover {
+    background-color: transparent;
+    color:#00ccff;
+    border:2px solid #00ccff;
+}
+.secondary {
+    color:gray;
+}
+
+.content-col {
+    padding:5%;
+}
+.para {
+    text-align: left;
+    color:white;
+    margin-top: auto;
+    margin-bottom: autos;
+}

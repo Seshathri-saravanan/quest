@@ -4,3 +4,6 @@ from django.shortcuts import render
 
 def index(request):
     return render(request, 'home/landingpage.html', {})
+
+def historical(request):
+    return render(request, 'places/place.html', {})
