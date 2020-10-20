@@ -23,3 +23,8 @@ def temples(request):
 def hills(request):
     return render(request, 'places/hills.html', {'placename':"HILL STATIONS"})
 
+def aboutus(request):
+    return render(request, 'home/aboutus.html', {})
+
+def blog(request):
+    return render(request, 'blogs/blog.html', {'li':list(range(10))})

@@ -9,8 +9,47 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     <title>Tourist App</title>
+    <script>
+      $(document).ready(function(){
+        $("#postbtn").click(function(){
+          var txt = `<div class="row p-3">
+        <div class="col-12 offset-md-2 col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2">
+                                <img  src="{% static 'images/historical.jpg' %}"  class="avatar">
+                            </div>
+                            <div class="col-8 conatiner">
+                                <div class="row">
+                                    <h3>George</h3>
+                                </div>
+                                <div class="row">
+                                    <p>Posted 3hrs ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">`
+    var txt2 = $("#usrmsg").html();
+    var txt3=`  </p>
+                </div>
+                </div>
+                </div>
+                </div>`;
+         // $("#usrmsg").prepend(txt);
+
+          $("#blogcontainer").prepend(txt+txt2+txt3);
+        });
+      });
+    </script>
   </head>
   <body>
     {% include "home/header.html" %} 

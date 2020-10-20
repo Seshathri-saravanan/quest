@@ -9,5 +9,8 @@ urlpatterns = [
     path('parks',views.parks,name='parks'),
     path('cities',views.cities,name='cities'),
     path('beaches',views.beaches,name='beaches'),
-    path('hills',views.hills,name='hills')
+    path('hills',views.hills,name='hills'),
+    path('aboutus',views.aboutus,name='aboutus'),
+    path('blog',views.blog,name='blog'),
+
 ]
