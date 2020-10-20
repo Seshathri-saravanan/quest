@@ -149,3 +149,6 @@ background-color: blue;
     height: 75px;
     border-radius: 50%;
   }
+  .card-text {
+      text-align: left;
+  }
