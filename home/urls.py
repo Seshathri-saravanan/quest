@@ -1,9 +1,10 @@
-from django.urls import path
+from django.urls import path, re_path
 
 from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('home', views.home, name='home'),
     path('historical',views.historical,name='historical'),
     path('temples',views.temples,name='temples'),
     path('parks',views.parks,name='parks'),
@@ -12,5 +13,6 @@ urlpatterns = [
     path('hills',views.hills,name='hills'),
     path('aboutus',views.aboutus,name='aboutus'),
     path('blog',views.blog,name='blog'),
+    re_path('places/[0-9]+',views.places,name='places')
 
 ]

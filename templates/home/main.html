@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} 
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,12 +8,42 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+    <!--jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--google icons-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--font awesome icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--loading static files-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-    <title>Quest</title>
+    <title>tourist</title>
     <script>
+      function slideright(id) {
+          var container = document.getElementById(id);
+          sideScroll(container,'right',25,1000,500);
+      };
+      function slideleft(id) {
+          var container = document.getElementById(id);
+          sideScroll(container,'left',25,1000,500);
+      };
+
+      function sideScroll(element,direction,speed,distance,step){
+          scrollAmount = 0;
+          var slideTimer = setInterval(function(){
+              if(direction == 'left'){
+                  element.scrollLeft -= step;
+              } else {
+                  element.scrollLeft += step;
+              }
+              scrollAmount += step;
+              if(scrollAmount >= distance){
+                  window.clearInterval(slideTimer);
+              }
+          }, speed);
+      }
       $(document).ready(function(){
         $(".bigtext").show();
         $(".threecont").hide();
