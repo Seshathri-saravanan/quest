@@ -1,23 +1,27 @@
 {% extends 'home/main.html'%}
 {% block body %}
-<div style="background-color: black;width:100%;padding-top: 100px;min-height: 110vh;">
+{% load static %}
+<div style="background-color: black;width:100%;padding-top: 100px;min-height: 110vh;height:100%">
 
     <div class="container">
         {% for i in places %}
         <div class="row">
             <div class="col-12">
-                <div class="card mb-3" style="width:100%">
+                <div class="card mb-3" style="width:100%;">
                     <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src={{i.2}} style="width: 100%;height: 100%;object-fit: cover;" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                        <h5 class="card-title">{{i.0}}</h5>
-                        <p class="card-text">{{i.1}}</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <div class="col-md-4">
+                            <picture>
+                                <source media="(min-width:0px)" srcset={{i.2}} >
+                            <img src="{% static 'images/questlogo.jpeg' %}" style="width: 100%;height: 100%;object-fit: fill;" alt="...">
+                            </picture>
                         </div>
-                    </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                            <h5 class="card-title">{{i.0}}</h5>
+                            <p class="card-text">{{i.1}}</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,13 +5,27 @@ import requests
 import json
 import string
 from .apiFunctions import placesByStates
-fi = open("./project/static/statesLocation.txt",'r') 
-states = []  
-j = 0
-for i in fi.readlines():
-    states.append([j]+i.rsplit(maxsplit=3))
-    j+=1
-fi.close()
+states = []
+stateImages = []
+with open("./project/static/statesImages.txt",'r') as fi:
+    for i in fi.readlines():
+        stateImages.append(i)
+with open('./project/static/statesLocation.txt','r') as fi:
+    j = 0
+    for line in fi.readlines():
+        words = line.split()
+        name = words[0]
+        li = []
+        for i in range(1,len(words),2):
+            li.append("{0} {1}".format(words[i],words[i+1]))
+            dic = {'type':'POLYGON','vertices':li}
+        #print([name,dic])
+        url = stateImages[j].split()[-1]
+        states.append([j,name,dic,url])
+        j+=1
+#print(states)
+print(Person.objects.all())
+
 def home(request):
     #print(states)
     '''
@@ -25,13 +39,14 @@ def home(request):
     kk = json.loads(response.text)
     print(kk['value'][0]['thumbnailUrl'])
     '''
+    print(Person.objects.all())
     return render(request, 'home/home.html', {'range':range(10),'imageUrl':'https://tse1.mm.bing.net/th?id=OIP.p-qglTQvUYPA_bR0R9Eu3AHaEy&pid=Api','states':states})
 
 def places(request):
     ind = request.path.rsplit('/',1)[1]
     place = states[int(ind)]
     places = placesByStates(place)
-    print("here -->",places)
+    #print("here -->",places)
     return render(request, 'home/placeslist.html', {'places':places})
 
 
@@ -44,7 +59,9 @@ def index(request):
     except:
         print("Not worked")
     #print(request.POST['exampleInputEmail1'])
-    return render(request, 'home/landingpage.html', {})
+    name = Person.objects.get(id=1)
+    name = name.first_name
+    return render(request, 'home/landingpage.html', {'name':name})
 
 def historical(request):
     return render(request, 'places/historical.html', {'placename':"HISTORICAL PLACES"})
