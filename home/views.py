@@ -59,9 +59,7 @@ def index(request):
     except:
         print("Not worked")
     #print(request.POST['exampleInputEmail1'])
-    name = Person.objects.get(id=1)
-    name = name.first_name
-    return render(request, 'home/landingpage.html', {'name':name})
+    return render(request, 'home/landingpage.html', {name:"EXPLORE"})
 
 def historical(request):
     return render(request, 'places/historical.html', {'placename':"HISTORICAL PLACES"})
