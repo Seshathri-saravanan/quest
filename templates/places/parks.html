@@ -3,8 +3,11 @@
 {% block placename %}
     <h1 class="para">NATIONAL PARKS</h1>
 {% endblock %}
+{% block button  %}
+<button type="button" onclick="location.href='categories/parks'" style="position: absolute;top:70vmin;left:42vmax" class="custombtn" >Let's Explore</button>
+{% endblock %}
 {% block topimage %}
-    <img src="{% static 'images/tiger.jpg' %}" style="height: 100vh; width: 100%;object-fit: cover;" class="carousel-img"/>
+    <img src="{% static 'images/parks.jpg' %}" style="height: 100vh; width: 100%;object-fit: cover;" class="carousel-img"/>
 {% endblock %}
 {% block aboutplace %}
     <p class="para">

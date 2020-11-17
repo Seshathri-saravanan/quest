@@ -3,6 +3,9 @@
 {% block placename %}
     <h1 class="para">TEMPLES</h1>
 {% endblock %}
+{% block button  %}
+<button type="button" onclick="location.href='categories/temples'" style="position: absolute;top:70vmin;left:42vmax" class="custombtn" >Let's Explore</button>
+{% endblock %}
 {% block topimage %}
     <img src="{% static 'images/historical.jpg' %}" style="height: 100vh; width: 100%;object-fit: cover;" class="carousel-img"/>
 {% endblock %}
@@ -94,7 +97,7 @@
                 <p style="font-size: 5rem;color:white;">JAIPUR</p>
             </div>
             <div class="col-12 d-none d-md-block col-md-4 align-self-center">
-                <img src="{% static 'images/jaipur1.jpeg' %}" style="height: 50vh; width: 100%;object-fit: cover;" class="carousel-img"/>
+                <img src="{% static 'images/temples.jpg' %}" style="height: 50vh; width: 100%;object-fit: cover;" class="carousel-img"/>
             </div>
             <div class="col-12 col-md-4 align-self-center">
                 <img src="{% static 'images/jaipur2.jpeg' %}" style="height: 70vh; width: 100%;object-fit: cover;" class="carousel-img"/>

@@ -13,6 +13,8 @@ urlpatterns = [
     path('hills',views.hills,name='hills'),
     path('aboutus',views.aboutus,name='aboutus'),
     path('blog',views.blog,name='blog'),
-    re_path('places/[0-9]+',views.places,name='places')
+    re_path('states/[0-9]+',views.places,name='states'),
+    re_path('categories/[a-zA-Z]+',views.places,name='states')
+
 
 ]

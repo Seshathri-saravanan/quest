@@ -95,10 +95,10 @@
             <div class="scoll-pane mt-4" id="explorebystates" style="overflow: auto;white-space: nowrap;">
                 <div class="container" style="display: inline-block;">
                         {% for i in states %}
-                        <div  style="display: inline-block;width:34%;padding: 4px;border:1px solid white;margin:4px">
+                        <div  style="display: inline-block;width:34%;padding: 4px;border:0.1px solid #b3dbff;margin:4px">
                             <div style="position: relative;">
-                                <a href="/places/{{i.0}}">
-                                <img src={{i.3}} style="filter: brightness(65%);width:100%;object-fit: cover;height: 400px;" class="card-img-top" alt="..."   loading="lazy"/>
+                                <a href="/states/{{i.0}}">
+                                <img src={{i.2}} style="filter: brightness(65%);width:100%;object-fit: cover;height: 400px;" class="card-img-top" alt="..."   loading="lazy"/>
                                 <div style="position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);">
                                     <p><h2 style="color: white;">{{i.1}}</h2></p>
                                 </div>
@@ -117,39 +117,25 @@
         </div>
         <div class="row" style="position: relative;">
             <div class="col-12">
-                <h4 style="color: blanchedalmond;">Recommended places for you</h4>
+                <h4 style="color: blanchedalmond;">Explore by Categories</h4>
             </div>
             <div class="scoll-pane mt-4" id="recommendedplaces" style="overflow: auto;white-space: nowrap;">
-                {% for i in range %}
+                
                 <div class="container" style="display: inline-block;">
-                    <div class="row">
-                        <div class="col-4 p-2">
-                            <div class="card">
-                                <img src={{imageUrl}} class="card-img-top" alt="...">
+                        {% for i in categories %}
+                        <div style="display: inline-block;width:34%;padding: 4px;border:0.1px solid #b3dbff;margin:4px;">
+                            <div class="card" style="height: 100%;">
+                                <a href="/{{i.1}}">
+                                <img src="{% get_static_prefix %}images/{{ i.1 }}.jpg" style="height: 250px;width: 100%;">
                                 <div class="card-footer">
-                                    <small class="text-muted">FOrt</small>
+                                    <small class="text-muted">{{i.0}}</small>
                                 </div>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-4 p-2">
-                            <div class="card">
-                                <img src="{% static 'images/fort.png' %}" class="card-img-top" alt="...">
-                                <div class="card-footer">
-                                    <small class="text-muted">FOrt</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4 p-2">
-                            <div class="card">
-                                <img src="{% static 'images/fort.png' %}" class="card-img-top" alt="...">
-                                <div class="card-footer">
-                                    <small class="text-muted">FOrt</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        {% endfor %}
                 </div>
-                {% endfor %}
+                
             </div>
             
                 <div style="position: absolute;top:50%;left: 1%;">

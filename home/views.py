@@ -4,12 +4,22 @@ from .models import Person
 import requests
 import json
 import string
-from .apiFunctions import placesByStates
+from places.models import TouristPlaces
+from django.db.models import Q
 states = []
 stateImages = []
+categories = [['Historical places','historical'],['Beaches','beaches'],['National parks','parks'],['Hill stations','hills'],['temples','temples'],['cities','cities']]
 with open("./project/static/statesImages.txt",'r') as fi:
+    j = 0
     for i in fi.readlines():
-        stateImages.append(i)
+        li = [j]+ list(i.rsplit(maxsplit=1))
+        stateImages.append(li)
+        j+=1
+#print(stateImages)
+#saveInDatabase('')
+
+
+'''
 with open('./project/static/statesLocation.txt','r') as fi:
     j = 0
     for line in fi.readlines():
@@ -24,8 +34,9 @@ with open('./project/static/statesLocation.txt','r') as fi:
         states.append([j,name,dic,url])
         j+=1
 #print(states)
-print(Person.objects.all())
-
+for i in states[24:]:
+    placesByStates(i)
+'''
 def home(request):
     #print(states)
     '''
@@ -39,13 +50,27 @@ def home(request):
     kk = json.loads(response.text)
     print(kk['value'][0]['thumbnailUrl'])
     '''
-    print(Person.objects.all())
-    return render(request, 'home/home.html', {'range':range(10),'imageUrl':'https://tse1.mm.bing.net/th?id=OIP.p-qglTQvUYPA_bR0R9Eu3AHaEy&pid=Api','states':states})
+    return render(request, 'home/home.html', {'range':range(10),'imageUrl':'https://tse1.mm.bing.net/th?id=OIP.p-qglTQvUYPA_bR0R9Eu3AHaEy&pid=Api','states':stateImages,'categories':categories})
 
 def places(request):
-    ind = request.path.rsplit('/',1)[1]
-    place = states[int(ind)]
-    places = placesByStates(place)
+    ind = request.path.rsplit('/',1)
+    if(ind[0]=="/states"):
+        place = stateImages[int(ind[1])][1]
+        places = TouristPlaces.objects.all().filter(Q(state=place) & ~Q(category=7315023) & ~Q(category=7314003) )
+    elif ind[0]=="/categories":
+        if ind[1]=='beaches':
+            places = TouristPlaces.objects.all().filter(category=9357)
+        elif ind[1]=='historical':
+            places = TouristPlaces.objects.all().filter(category=7376003)
+        elif ind[1]=='temples':
+            places = TouristPlaces.objects.all().filter(category=7339005)
+        elif ind[1]=='hills':
+            places = TouristPlaces.objects.all().filter(Q(category=7337) | Q(category=7376004))
+        elif ind[1]=='parks':
+            places = TouristPlaces.objects.all().filter(name__contains="Park")
+
+    #print(places)
+    #places = placesByStates(place)
     #print("here -->",places)
     return render(request, 'home/placeslist.html', {'places':places})
 
@@ -59,7 +84,7 @@ def index(request):
     except:
         print("Not worked")
     #print(request.POST['exampleInputEmail1'])
-    return render(request, 'home/landingpage.html', {name:"EXPLORE"})
+    return render(request, 'home/landingpage.html', {})
 
 def historical(request):
     return render(request, 'places/historical.html', {'placename':"HISTORICAL PLACES"})

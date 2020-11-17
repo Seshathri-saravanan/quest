@@ -1,0 +1,52 @@
+{% extends 'home/main.html'%}
+{% block body %}
+<div class="container-fluid" style="padding-top: 100px;background-color: black;">
+    <div class="row">
+        <div  style="background-color: white;position: fixed;width: 25vw;">
+            <div class="width:100%;height:100%;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <h4>Filter</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-12" style="border:0.5px solid black;">
+                            <p>filter by states</p>
+                        </div>
+                        <div class="col-12" style="border:0.5px solid black;">
+                            <p>Hello</p>
+                        </div>
+                        <div class="col-12" style="border:0.5px solid black;">
+                            <p>Hello</p>
+                        </div>
+                        <div class="col-12" style="border:0.5px solid black;">
+                            <p>Hello</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12" style="border:0.5px solid black;">
+                            <p>filter by categories</p>
+                        </div>
+                        <div class="col-12" style="border:0.5px solid black;">
+                            <p>Hello</p>
+                        </div>
+                        <div class="col-12" style="border:0.5px solid black;">
+                            <p>Hello</p>
+                        </div>
+                        <div class="col-12" style="border:0.5px solid black;">
+                            <p>Hello</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        
+        <div class="col-9 offset-3">
+            {% block placeList %}
+            <h2>Place list</h2>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
