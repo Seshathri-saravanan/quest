@@ -79,7 +79,8 @@ def index(request):
     #print("hello")
     #print(Person.objects.all())
     try:
-        k = request.POST['search']
+        k = request.POST
+        print("from index post")
         print(k)
     except:
         print("Not worked")
