@@ -22,7 +22,9 @@ with open("./project/static/statesImages.txt",'r') as fi:
 
 def index(request):
     print("from home ind")
-    return redirect('/login/login')
+    if validate.alreadyLoggedIN(request):
+        return redirect('/home')
+    return render(request, 'home/landingpage.html',{})
 '''
 with open('./project/static/statesLocation.txt','r') as fi:
     j = 0

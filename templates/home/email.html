@@ -11,21 +11,18 @@
         <img src="{% static 'images/questlogo.jpeg' %}" width="50%" object-fit="contain" class="logoimage"/>
       </div>
       <div style="padding: 5% 7% 5% 7%;">
-          <form action="/login/login" method="post"> {% csrf_token %}        
+          <form action="/login/index" method="post"> {% csrf_token %}        
               <div class="form-group" style="padding:4% 10% 4% 10%">
-                <label for="exampleInputEmail1" style="padding:4%">Username</label>
-                <input  name="username" class="custom-input" >
-              </div>
-              <div class="form-group" style="padding:4% 10% 4% 10%">
-                <label for="exampleInputEmail1" style="padding:4%">Password</label>
-                <input  name="password" class="custom-input" >
+                <label for="exampleInputEmail1" style="padding:4%">Email</label>
+                <input  name="email" class="custom-input" placeholder="enter your email" >
               </div>
               <div style="display: flex;flex-direction: column;justify-content: center;padding-top:5%">
-                <input type="submit" value="Login" class="custombtn" style="margin-left: auto;margin-right: auto;"></input>
+                <input type="submit" value="verify" class="custombtn" style="margin-left: auto;margin-right: auto;"></input>
+                <small>On clicking verify , an otp will be sent to your provided email</small>
               </div>
           </form>
           <div>
-            <p>Dont Have Account?<a href="/login/signupwithemail">SIGN UP</a></p>
+            <p>Aleardy Have Account?<a href="login/login">LOG IN</a></p>
           </div>
       </div>
 </div>

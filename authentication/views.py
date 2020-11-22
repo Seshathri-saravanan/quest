@@ -5,21 +5,21 @@ from .models import Client
 from home.views import home
 import random
 from django.shortcuts import redirect
+
 def index(request):
-    #print("hello")
-    #print(Person.objects.all())
+    if validate.alreadyLoggedIN(request):
+        return redirect("/home")
+    #print(request.POST['exampleInputEmail1'])
+    return render(request, 'home/landingpage.html', {})
+
+
+def sendOTP(request):
+    print("IN sendOtp",request.POST)
     try:
-        #print('post')
         k = request.POST
-        #print('after post',k['email'])
-        #print(request.session)
-        #print("from index auth")
-        #print(k)
         email = k['email']
-        #print('bef')
         res = validate.validateEmail(email) 
         request.session['email'] = email
-        #print("in auth - mail",request.session['email'])
         if res:
             otp = random.randint(10000,99999)
             request.session['otp'] = otp
@@ -27,9 +27,8 @@ def index(request):
             return render(request, 'home/otp.html', {'email':request.session['email']})
         return render(request, 'home/landingpage.html', {'message':'email already exists'})
     except:
-        print("Not worked")
-    #print(request.POST['exampleInputEmail1'])
-    return render(request, 'home/landingpage.html', {})
+        return render(request, 'home/landingpage.html', {})
+
 
 def verifyemail(request):
     otp = request.POST['otp'] 
@@ -42,12 +41,17 @@ def verifyemail(request):
     return render(request, 'home/otp.html', {'alert':'sorry wrong otp','email':request.session['email']})
     #print('otp',k)
 
+
+def signupwithemail(request):
+    return render(request,'home/email.html')
+
+
 def signup(request):
     try:
         obj = Client(email=request.session['email'],password=request.POST['password'],username=request.POST['username'])
         obj.save()
         print(obj)
-        return render(request, 'home/tmp.html',{'message':'login successful'})
+        return render(request, 'home/tmp.html',{'message':'signup successful'})
     except:
         return render(request, 'home/signup.html')
 
@@ -60,6 +64,7 @@ def login(request):
         return redirect('/home')
     except:
         print("no session")
+    print(request.POST)
     try:
         obj = Client.objects.all().filter(username=request.POST['username'])
         print(obj)
@@ -72,24 +77,24 @@ def login(request):
                 print("succesful login")
                 request.session['username'] = request.POST['username']
                 request.session['password'] = request.POST['password']
-                return render(request, 'home/tmp.html',{'message':'Succesful email'})
+                return redirect("/home")
             else:
                 print("incorrect password")
-                return render(request, 'home/tmp.html',{'message':'INcorrect password'})
+                return render(request, 'home/landingpage.html',{'message':'INcorrect password'})
         print(obj)
-        return render(request, 'home/tmp.html',{'message':'login successful'})
+        return redirect("/home")
     except:
         print("email")
-        return render(request, 'home/login.html')
-
+        return redirect("/")
+        
 def logout(request):
     request.session.clear()
     print('cleared')
-    return redirect('/login/login')
+    return redirect('/login/')
 
 def tmp(request):
     if not validate.alreadyLoggedIN(request):
-        return redirect('/login/login')
+        return redirect('/login/')
     return home(request)
 
     #print('otp',k)
