@@ -6,6 +6,8 @@ import json
 import string
 from places.models import TouristPlaces
 from django.db.models import Q
+from authentication import validate
+from django.shortcuts import redirect
 states = []
 stateImages = []
 categories = [['Historical places','historical'],['Beaches','beaches'],['National parks','parks'],['Hill stations','hills'],['temples','temples'],['cities','cities']]
@@ -18,7 +20,9 @@ with open("./project/static/statesImages.txt",'r') as fi:
 #print(stateImages)
 #saveInDatabase('')
 
-
+def index(request):
+    print("from home ind")
+    return redirect('/login/login')
 '''
 with open('./project/static/statesLocation.txt','r') as fi:
     j = 0
@@ -50,9 +54,13 @@ def home(request):
     kk = json.loads(response.text)
     print(kk['value'][0]['thumbnailUrl'])
     '''
-    return render(request, 'home/home.html', {'range':range(10),'imageUrl':'https://tse1.mm.bing.net/th?id=OIP.p-qglTQvUYPA_bR0R9Eu3AHaEy&pid=Api','states':stateImages,'categories':categories})
+    if not validate.alreadyLoggedIN(request):
+        return redirect('/login/login')
+    return render(request, 'home/home.html', {'range':range(10),'imageUrl':'https://tse1.mm.bing.net/th?id=OIP.p-qglTQvUYPA_bR0R9Eu3AHaEy&pid=Api','states':stateImages,'categories':categories,'username':request.session['username']})
 
 def places(request):
+    if not validate.alreadyLoggedIN(request):
+        return redirect('/login/login')
     ind = request.path.rsplit('/',1)
     if(ind[0]=="/states"):
         place = stateImages[int(ind[1])][1]
@@ -74,39 +82,42 @@ def places(request):
     #print("here -->",places)
     return render(request, 'home/placeslist.html', {'places':places})
 
-
-def index(request):
-    #print("hello")
-    #print(Person.objects.all())
-    try:
-        k = request.POST
-        print("from index post")
-        print(k)
-    except:
-        print("Not worked")
-    #print(request.POST['exampleInputEmail1'])
-    return render(request, 'home/landingpage.html', {})
-
 def historical(request):
+    if not validate.alreadyLoggedIN(request):
+        return redirect('/login/login')
     return render(request, 'places/historical.html', {'placename':"HISTORICAL PLACES"})
 
 def cities(request):
+    if not validate.alreadyLoggedIN(request):
+        return redirect('/login/login')
     return render(request, 'places/cities.html', {'placename':"MAJOR CITIES"})
 
 def parks(request):
+    if not validate.alreadyLoggedIN(request):
+        return redirect('/login/login')
     return render(request, 'places/parks.html', {'placename':"NATIONAL PARKS"})
 
 def beaches(request):
+    if not validate.alreadyLoggedIN(request):
+        return redirect('/login/login')
     return render(request, 'places/beaches.html', {'placename':"BEACHES"})
 
 def temples(request):
+    if not validate.alreadyLoggedIN(request):
+        return redirect('/login/login')
     return render(request, 'places/temples.html', {'placename':"TEMPLES"})
 
 def hills(request):
+    if not validate.alreadyLoggedIN(request):
+        return redirect('/login/login')
     return render(request, 'places/hills.html', {'placename':"HILL STATIONS"})
 
 def aboutus(request):
+    if not validate.alreadyLoggedIN(request):
+        return redirect('/login/login')
     return render(request, 'home/aboutus.html', {})
 
 def blog(request):
+    if not validate.alreadyLoggedIN(request):
+        return redirect('/login/login')
     return render(request, 'blogs/blog.html', {'li':list(range(10))})

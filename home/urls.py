@@ -15,6 +15,4 @@ urlpatterns = [
     path('blog',views.blog,name='blog'),
     re_path('states/[0-9]+',views.places,name='states'),
     re_path('categories/[a-zA-Z]+',views.places,name='states')
-
-
 ]
