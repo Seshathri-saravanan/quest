@@ -51,9 +51,9 @@ def signup(request):
         obj = Client(email=request.session['email'],password=request.POST['password'],username=request.POST['username'])
         obj.save()
         print(obj)
-        return render(request, 'home/tmp.html',{'message':'signup successful'})
+        return redirect('/home')
     except:
-        return render(request, 'home/signup.html')
+        return render(request, 'home/landingpage.html')
 
 def login(request):
     print(request.POST)

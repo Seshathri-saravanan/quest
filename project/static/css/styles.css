@@ -1,6 +1,9 @@
 body {
     font-family: 'Playfair Display', serif;
 }
+.sansserif {
+    font-family: Arial, Helvetica, sans-serif;
+  }
 .scoll-pane {
     width: 100%;
     height: auto;
