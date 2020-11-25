@@ -1,6 +1,6 @@
 import requests
 import json
-from .models import Station,Train,TrainRoutes
+from .models import Train
 def aboutTrain(train_no):
     url = "https://trains.p.rapidapi.com//"
     payload = "{\r\"search\": \""+train_no+"\"\r}"

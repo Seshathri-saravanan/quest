@@ -13,7 +13,7 @@
             <form action="/train/" method='POST'> {% csrf_token %}
                 <select class="custom-input"  style="width:20vw;height:3vw;display: block;margin-left: auto;margin-right: auto; margin-bottom: 40px;" placeholder="destination" name="destination">
                     {% for i in station %}
-                    <option value="{{i.code}}" class="sansserif">{{i.name}},({{i.code}})</option>
+                    <option value="{{i}}" class="sansserif">{{i}}</option>
                     {% endfor %}
                 </select>      
                 <input type="submit" value="Search" class="custombtn" style="margin-left: auto;margin-right: auto;"></input>
@@ -26,9 +26,10 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-6">
-                                <h5 class="card-title sansserif">{{i.0.no}}</h5>
+                                <h5 class="card-title sansserif">{{i.1.no}}</h5>
                                 <h4 class="card-text sansserif" style="color: black;">{{i.1.name}}</h4>
-                                <p style="text-align: left;color: brown;" class="sansserif"><span style="color:blue" >SOURCE :&nbsp;</span>{{i.1.source}}&nbsp;&nbsp;<span style="color:blue"> DESTINATION : &nbsp;</span>{{i.1.destination}}</p>
+                                <p style="text-align: left;color: brown;" class="sansserif"><span style="color:blue" >SOURCE :&nbsp;</span>{{i.1.source}}&nbsp;&nbsp;</p>
+                                <p style="text-align: left;color: brown;" class="sansserif"><span style="color:blue"> DESTINATION : &nbsp;</span>{{i.1.destination}}</p>
                                 <a href="#" class="btn btn-primary sansserif">ARRIVAL:{{i.1.arrival}}</a>
                                 <a href="#" class="btn btn-primary sansserif">DEPARTURE:{{i.1.departure}}</a>
                             </div>

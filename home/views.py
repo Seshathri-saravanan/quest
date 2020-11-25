@@ -8,7 +8,8 @@ from places.models import TouristPlaces
 from django.db.models import Q
 from authentication import validate
 from django.shortcuts import redirect
-from trains.models import Train,Station,TrainRoutes
+from trains.models import Train
+from Restaurants.apiFunctions import savindbrestaurants
 from trains.apiFunctions import aboutTrain,stationCode,trainsInStations,codeToName,saveindb
 states = []
 stateImages = []
@@ -57,18 +58,34 @@ for i in l:
 li = set(li)
 print(len(li))
 saveindb(li)      
-'''
+
+
+districts = TouristPlaces.objects.all().distinct('district')
+j = 0
+#print(districts[115].district)
+for i in districts[118:]:
+    print(i.district)
+    savindbrestaurants(i.district,i.state)
 #saveindb()
+objs = Train.objects.all()
+for i in objs:
+    obj1 = Station.objects.filter(code=i.destination)
+    obj2 = Station.objects.filter(code=i.source)
+    i.destination = i.destination + ', '+obj1[0].name
+    i.source = i.source + ', '+obj2[0].name
+    i.save()
+    print(i.source,i.destination)
+'''
 def index(request):
     print("from home ind")
     if validate.alreadyLoggedIN(request):
         return redirect('/home')
-    return render(request, 'home/landingpage.html',{})
+    return render(request, 'home/landingpage.html',{'message':'Login/Signup to continue'})
 
 def home(request):
     if not validate.alreadyLoggedIN(request):
         return redirect('/login/login')
-    return render(request, 'home/home.html', {'range':range(10),'imageUrl':'https://tse1.mm.bing.net/th?id=OIP.p-qglTQvUYPA_bR0R9Eu3AHaEy&pid=Api','states':stateImages,'categories':categories,'username':request.session['username']})
+    return render(request, 'home/home.html', {'range':range(10),'imageUrl':'https://tse1.mm.bing.net/th?id=OIP.p-qglTQvUYPA_bR0R9Eu3AHaEy&pid=Api','states':stateImages,'categories':categories,'username':request.session['username'],'message':'welcome '+request.session['username']+' !!'})
 
 def places(request):
     if not validate.alreadyLoggedIN(request):

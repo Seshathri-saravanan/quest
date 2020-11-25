@@ -25,7 +25,9 @@ INSTALLED_APPS = [
     'home',
     'places',
     'authentication',
-    'trains'
+    'trains',
+    'Restaurants',
+    'Hotels'
 ]
 
 MIDDLEWARE = [

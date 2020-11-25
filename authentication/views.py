@@ -70,7 +70,7 @@ def login(request):
         print(obj)
         if len(obj)==0:
             print("incorrect email")
-            return render(request, 'home/tmp.html',{'message':'INcorrect mail address'})
+            return render(request, 'home/landingpage.html',{'message':'INcorrect password'})
         else:
             print("crct email")
             if obj[0].password==request.POST['password']:
