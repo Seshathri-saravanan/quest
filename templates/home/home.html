@@ -145,49 +145,7 @@
                     <button id="slide" type="button" onclick="slideright('recommendedplaces');">Next<i class="fa fa-caret-right"></i></button>
                 </div>
         </div>
-        <div class="row" style="position: relative;">
-            <div class="col-12">
-                <h4 style="color: blanchedalmond;">Top tourist places</h4>
-            </div>
-            <div class="scoll-pane mt-4" id="topplaces" style="overflow: auto;white-space: nowrap;">
-                {% for i in range %}
-                <div class="container" style="display: inline-block;">
-                    <div class="row">
-                        <div class="col-4 p-2">
-                            <div class="card">
-                                <img src="{% static 'images/fort.png' %}" class="card-img-top" alt="..." loading="lazy">
-                                <div class="card-footer">
-                                    <small class="text-muted">FOrt</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4 p-2">
-                            <div class="card">
-                                <img src="{% static 'images/fort.png' %}" class="card-img-top" alt="..."  loading="lazy">
-                                <div class="card-footer">
-                                    <small class="text-muted">FOrt</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4 p-2">
-                            <div class="card">
-                                <img src="{% static 'images/fort.png' %}" class="card-img-top" alt="..."  loading="lazy">
-                                <div class="card-footer">
-                                    <small class="text-muted">FOrt</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            <div style="position: absolute;top:50%;left: 1%;">
-                <button id="slideBack" type="button" onclick="slideleft('topplaces');"><i class="fa fa-caret-left"></i>Prev</button>
-            </div>
-            <div style="position: absolute;top:50%;left:96%;">
-                <button id="slide" type="button" onclick="slideright('topplaces');">Next<i class="fa fa-caret-right"></i></button>
-            </div>
-        </div>
+
         
         
     </div>
