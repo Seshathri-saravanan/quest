@@ -105,11 +105,13 @@ def places(request):
             places = TouristPlaces.objects.all().filter(Q(category=7337) | Q(category=7376004))
         elif ind[1]=='parks':
             places = TouristPlaces.objects.all().filter(name__contains="Park")
-
+    placefinal = []
+    for i in places:
+        placefinal.append([i,list(i.address.split(','))])
     #print(places)
     #places = placesByStates(place)
     #print("here -->",places)
-    return render(request, 'home/placeslist.html', {'places':places,'username':request.session['username']})
+    return render(request, 'home/placeslist.html', {'places':placefinal,'username':request.session['username'],'categories':categories,'states':stateImages})
 
 def historical(request):
     if not validate.alreadyLoggedIN(request):
