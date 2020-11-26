@@ -11,6 +11,8 @@ from django.shortcuts import redirect
 from trains.models import Train
 from Restaurants.apiFunctions import savindbrestaurants
 from trains.apiFunctions import aboutTrain,stationCode,trainsInStations,codeToName,saveindb
+from Hotels.models import Hotel
+from Restaurants.models import Restaurant
 states = []
 stateImages = []
 categories = [['Historical places','historical'],['Beaches','beaches'],['National parks','parks'],['Hill stations','hills'],['temples','temples'],['cities','cities']]
@@ -107,7 +109,8 @@ def places(request):
             places = TouristPlaces.objects.all().filter(name__contains="Park")
     placefinal = []
     for i in places:
-        placefinal.append([i,list(i.address.split(','))])
+        placefinal.append([i,list(i.address.split(',')),i.imageurl])
+    placefinal.sort(key = lambda x: x[2],reverse=True)
     #print(places)
     #places = placesByStates(place)
     #print("here -->",places)
@@ -117,6 +120,18 @@ def historical(request):
     if not validate.alreadyLoggedIN(request):
         return redirect('/login/login')
     return render(request, 'places/historical.html', {'placename':"HISTORICAL PLACES",'username':request.session['username']})
+
+def place(request):
+    ind = request.path.rsplit('/',1)
+    print(ind)
+    place = TouristPlaces.objects.filter(name=ind[1])
+    place = place[0]
+    print(place)
+    district = place.district
+    hotels = Hotel.objects.filter(district=district)
+    restaurants = Restaurant.objects.filter(district=district)
+    address = place.address.split(',')
+    return  render(request, 'home/hotels.html', {'place':place,'address':address,'username':request.session['username'],'hotels':hotels,'restaurants':restaurants})
 
 def cities(request):
     if not validate.alreadyLoggedIN(request):

@@ -21,10 +21,11 @@
                             <hr/>
                             <h5 style="text-align: left;">Location</h5>
                             {% for j in i.1 %}
-                            <p class="sansserif" style="text-align: left;">{{j}},</p>
+                            <p class="sansserif" style="text-align: left;margin:0;">{{j}},</p>
                             {% endfor %}
-                            <a href="#" class="btn btn-primary sansserif">Explore Hotels nearby</a>
-                            <a href="#" class="btn btn-primary sansserif">Explore Restaurants nearby</a>
+                            <br/>
+                            <a href="/place/{{i.0.name}}" class="btn btn-primary sansserif">Explore Hotels nearby</a>
+                            <a href="/place/{{i.0.name}}" class="btn btn-primary sansserif">Explore Restaurants nearby</a>
                         </div>
                         </div>
                     </div>
